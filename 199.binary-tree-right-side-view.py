@@ -20,13 +20,11 @@ class Solution:
         res = []
         while queue:
             level = len(queue)
-            currentLevel = []
-            for _ in range(level):
+            for i in range(0,level):
                 currentNode = queue.popleft()
-                currentLevel.append(currentNode.val)
+                if i == level - 1: res.append(currentNode.val)  # if last node in level
                 if currentNode.left: queue.append(currentNode.left)
                 if currentNode.right: queue.append(currentNode.right)
-            res.append(currentLevel[-1])
         return res
 # @lc code=end
 
