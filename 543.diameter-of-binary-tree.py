@@ -11,9 +11,9 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# brute force method
 from collections import deque
 class Solution:
-    # brute force method
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         if not root: return 0
         res = 0
@@ -43,5 +43,20 @@ class Solution:
                 if currentNode.left: queue.append(currentNode.left)
                 if currentNode.right: queue.append(currentNode.right)
         return dep
+
+# # efficent way
+# class Solution:
+#     # Efficent way
+#     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+#         res = 0
+#         def dfs(node):
+#             nonlocal res
+#             if not node: return -1
+#             left = dfs(node.left)
+#             right = dfs(node.right)
+#             res = max(res, 2 + left + right)
+#             return max(left, right) + 1
+#         dfs(root)
+#         return res
 # @lc code=end
 
